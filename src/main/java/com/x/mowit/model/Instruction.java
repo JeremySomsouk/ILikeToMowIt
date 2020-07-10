@@ -50,7 +50,6 @@ public enum Instruction {
         mower.setDirection(mower.getDirection().getShiftRightDirection());
     }
 
-
     private static void handleRotateLeft(Mower mower, Grid grid) {
         mower.setDirection(mower.getDirection().getShiftLeftDirection());
     }
@@ -62,9 +61,7 @@ public enum Instruction {
         int nextX = mower.getXPosition() + direction.getXIncrement();
         int nextY = mower.getYPosition() + direction.getYIncrement();
 
-        if (grid.isNextPositionOpen(nextX, nextY)) {
-
-            grid.setNextPositionAndReleaseOld(nextX, nextY, mower.getXPosition(), mower.getYPosition());
+        if (grid.checkAndSetNextPosition(nextX, nextY, mower.getXPosition(), mower.getYPosition())) {
             mower.setXPosition(nextX);
             mower.setYPosition(nextY);
         }

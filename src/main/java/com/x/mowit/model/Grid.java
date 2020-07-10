@@ -34,20 +34,31 @@ public class Grid {
         return maxHeight;
     }
 
-    public synchronized void setNextPositionAndReleaseOld(int nextX, int nextY, int oldX, int oldY) {
-        this.gridOccupation[nextX][nextY] = true;
-        this.gridOccupation[oldX][oldY] = false;
+    public synchronized boolean checkAndSetNextPosition(int nextX, int nextY, int oldX, int oldY) {
+
+        boolean isNextPositionOpen = isNextPositionOpen(nextX, nextY);
+
+        if (isNextPositionOpen) {
+            setNextPositionAndReleaseOld(nextX, nextY, oldX, oldY);
+        }
+
+        return isNextPositionOpen;
     }
 
-    public boolean isNextPositionOpen(int x, int y) {
-        return isNextPositionInsideBorders(x, y) && isNextPositionFree(x, y);
+    boolean isNextPositionOpen(int nextX, int nextY) {
+        return isNextPositionInsideBorders(nextX, nextY) && isNextPositionFree(nextX, nextY);
     }
 
     private boolean isNextPositionInsideBorders(int x, int y) {
         return x >= 0 && y >= 0 && x <= maxWidth && y <= maxHeight;
     }
 
-    private synchronized boolean isNextPositionFree(int x, int y) {
+    private boolean isNextPositionFree(int x, int y) {
         return !this.gridOccupation[x][y];
+    }
+
+    private void setNextPositionAndReleaseOld(int nextX, int nextY, int oldX, int oldY) {
+        this.gridOccupation[nextX][nextY] = true;
+        this.gridOccupation[oldX][oldY] = false;
     }
 }

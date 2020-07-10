@@ -44,7 +44,7 @@ public class GridTest {
         assertThat(grid.isNextPositionOpen(5, 5)).isFalse();
         assertThat(grid.isNextPositionOpen(5, 4)).isTrue();
 
-        grid.setNextPositionAndReleaseOld(5, 4, 5, 5);
+        grid.checkAndSetNextPosition(5, 4, 5, 5);
         assertThat(grid.isNextPositionOpen(5, 5)).isTrue();
         assertThat(grid.isNextPositionOpen(5, 4)).isFalse();
     }
