@@ -1,0 +1,24 @@
+plugins {
+    id 'application'
+}
+
+group 'com.x'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-engine:5.3.1',
+            'org.junit.jupiter:junit-jupiter-api:5.3.1',
+            'org.assertj:assertj-core:3.16.1'
+    )
+}
+
+mainClassName = 'com.x.mowit.Main'
+
+test {
+    useJUnitPlatform()
+}
