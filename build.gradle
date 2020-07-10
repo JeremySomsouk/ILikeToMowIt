@@ -2,6 +2,7 @@ plugins {
     id 'application'
 }
 
+mainClassName = 'com.x.mowit.Main'
 group 'com.x'
 version '1.0-SNAPSHOT'
 
@@ -16,8 +17,6 @@ dependencies {
             'org.assertj:assertj-core:3.16.1'
     )
 }
-
-mainClassName = 'com.x.mowit.Main'
 
 test {
     useJUnitPlatform()

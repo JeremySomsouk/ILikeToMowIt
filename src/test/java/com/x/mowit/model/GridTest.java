@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class GridTest {
 
     @Test
-    void initGridOccupation_shouldBlockGridCasesWithMowers_withMowersPositionned() {
+    void initGridOccupation_shouldBlockGridCasesWithMowers_withMowersPositioned() {
 
         // GIVEN
         List<Mower> mowers = List.of(

@@ -18,6 +18,12 @@ It has a maxWidth and maxHeight, and the most important part is the 2 dimensiona
 After initially setting up the boolean array with the position of each mower, this object provides some utility methods to tell the caller if the cell it wants to go in next time is available or not.
 
 ### Step 3
+This is where it gets interesting. I decided that a mower has a position (x, y), a direction, a mower number (for the print in the last step), and also a list of instructions.
+At the construction of the mowers, I parse the instruction list and put each instruction inside a FIFO queue.
+
+Using the strategy pattern and a BiConsumer<Mower, Grid>, I can organize my code so that each instruction has an impact on a mower, for a grid. In this case I just go through each instruction of the mower's FIFO queue and each action is in order and doing the given checks on the only grid available.
+
+Since the two-dimensional array grid occupation is synchronized, each mower can only claim an available grid cell.
 
 ### Misc
 
